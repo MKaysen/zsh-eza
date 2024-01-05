@@ -16,7 +16,12 @@ if [[ ${zsh_loaded_plugins[-1]} != */zsh-eza && -z ${fpath[(r)${0:h}]} ]] {
 typeset -gA Plugins
 Plugins[ZSH_EZA_DIR]="${0:h}"
 
-alias ls="eza"
+(( ${+commands[eza]} )) && () {
+
+  alias ls="eza"
+
+} ${Plugins[ZSH_EZA_DIR]}
+
 alias l="ls -1a"
 alias ll="ls -l"
 alias lr="ll -T"
